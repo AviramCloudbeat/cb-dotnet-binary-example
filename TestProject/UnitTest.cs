@@ -21,6 +21,10 @@ namespace TestProject
             var linkText = "Complete list of Wikipedias";
             using (var driver = CloudBeatHelper.GetDriver(TestContext))
             {
+                var var1 = testContext.Properties["first"].ToString();
+                var var2 = testContext.Properties["second"].ToString();
+                var var3 = testContext.Properties["third"].ToString();
+                Console.out.writeln("Environment vars: " + var1 + "; " + var2 + "; " + var3 + ";");
                 driver.Navigate().GoToUrl(@"https://en.wikipedia.org/wiki/Main_Page");
                 var link = driver.FindElement(By.PartialLinkText(linkText));
                 var jsToBeExecuted = $"window.scroll(0, {link.Location.Y});";
